@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin | Benny's Tech Services</title>
+  <meta name="description" content="Admin page.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#14532d">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Benny's Tech Services">
+  <meta property="og:title" content="Admin | Benny's Tech Services">
+  <meta property="og:description" content="Admin page.">
+  <meta property="og:locale" content="en_NG">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">Benny's <span>Tech Services</span></a>
+      <nav id="main-nav" class="main-nav" aria-label="Main menu"><a href="/">Home</a><a href="/cyber-cafe">Cyber Cafe</a><a href="/business-centre">Business Centre</a><a href="/training">Training</a><a href="/contact">Contact</a></nav>
+      <div class="header-actions">
+        <button id="search-toggle" class="icon-btn" type="button" aria-label="Search services">&#128269;</button>
+        <button id="menu-toggle" class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+      </div>
+    </div>
+  </header>
+  <section id="search-bar" class="search-bar">
+    <div class="container">
+      <form id="search-form" role="search">
+        <input type="search" id="search-input" placeholder="Search services (for example JAMB, CV, printing)" aria-label="Search services">
+      </form>
+    </div>
+  </section>
+
+  <main id="main">
+    <section class="page-hero"><div class="container"><h1>Admin</h1></div></section>
+    <section class="page-body"><div class="container admin-wrap">
+
+      <div id="login-box" class="panel-box" style="max-width:420px">
+        <h2>Admin login</h2>
+        <form id="login-form">
+          <div class="field"><label for="a-email">Email</label><input type="email" id="a-email" name="email" autocomplete="username" required></div>
+          <div class="field"><label for="a-pass">Password</label><input type="password" id="a-pass" name="password" autocomplete="current-password" required></div>
+          <button class="btn btn-green" type="submit">Log in</button>
+        </form>
+        <p id="login-message" class="form-status" role="status"></p>
+      </div>
+
+      <div id="admin-panel" hidden>
+        <div class="admin-top">
+          <h2>Manage your website</h2>
+          <button id="logout" class="small-btn" type="button">Log out</button>
+        </div>
+        <div class="tabs">
+          <button type="button" data-tab="services" class="active">Services</button>
+          <button type="button" data-tab="posts">News posts</button>
+          <button type="button" data-tab="enquiries">Enquiries</button>
+        </div>
+
+        <div id="tab-services" class="tab">
+          <div class="table-scroll"><table>
+            <thead><tr><th>Title</th><th>Page</th><th>Home block</th><th>Trending</th><th>Shown</th><th></th></tr></thead>
+            <tbody id="svc-rows"></tbody>
+          </table></div>
+          <div class="panel-box">
+            <h2 id="svc-form-title">Add a service</h2>
+            <form id="svc-form">
+              <input type="hidden" name="id">
+              <div class="field"><label for="s-title">Title</label><input type="text" id="s-title" name="title" maxlength="150" required></div>
+              <div class="field"><label for="s-cat">Page it appears on</label>
+                <select id="s-cat" name="category">
+                  <option value="cyber-cafe">Cyber Cafe</option>
+                  <option value="business-centre">Business Centre</option>
+                  <option value="scratch-cards">Scratch Cards</option>
+                  <option value="training">Computer Training</option>
+                </select></div>
+              <div class="field"><label for="s-sec">Block on the Home page</label>
+                <select id="s-sec" name="section">
+                  <option value="">None</option>
+                  <option value="jamb">JAMB Services</option>
+                  <option value="exam">Exam Cards and Results</option>
+                  <option value="docs">Documents and Printing</option>
+                </select></div>
+              <div class="field"><label for="s-desc">Short description</label><textarea id="s-desc" name="description"></textarea></div>
+              <div class="field check"><input type="checkbox" id="s-trend" name="trending"><label for="s-trend">Show in Trending Services</label></div>
+              <div class="field check"><input type="checkbox" id="s-active" name="active" checked><label for="s-active">Show on the website</label></div>
+              <div class="form-actions">
+                <button class="btn btn-green" type="submit">Save service</button>
+                <button class="btn btn-outline-dark" type="button" id="svc-cancel">Clear form</button>
+              </div>
+              <p id="svc-status" class="form-status" role="status"></p>
+            </form>
+          </div>
+        </div>
+
+        <div id="tab-posts" class="tab" hidden>
+          <div class="table-scroll"><table>
+            <thead><tr><th>Title</th><th>Date</th><th>Shown</th><th></th></tr></thead>
+            <tbody id="post-rows"></tbody>
+          </table></div>
+          <div class="panel-box">
+            <h2 id="post-form-title">Add a news post</h2>
+            <form id="post-form">
+              <input type="hidden" name="id">
+              <div class="field"><label for="p-title">Title</label><input type="text" id="p-title" name="title" maxlength="200" required></div>
+              <div class="field"><label for="p-slug">Web address name (optional, made from the title if empty)</label><input type="text" id="p-slug" name="slug" maxlength="100" placeholder="for example: jamb-update"></div>
+              <div class="field"><label for="p-content">Message (leave a blank line between paragraphs)</label><textarea id="p-content" name="content" style="min-height:200px"></textarea></div>
+              <div class="field check"><input type="checkbox" id="p-pub" name="published" checked><label for="p-pub">Show on the website</label></div>
+              <div class="form-actions">
+                <button class="btn btn-green" type="submit">Save post</button>
+                <button class="btn btn-outline-dark" type="button" id="post-cancel">Clear form</button>
+              </div>
+              <p id="post-status" class="form-status" role="status"></p>
+            </form>
+          </div>
+        </div>
+
+        <div id="tab-enquiries" class="tab" hidden>
+          <button class="small-btn" type="button" id="enq-refresh" style="margin-bottom:12px">Refresh</button>
+          <p id="enq-status" class="form-status" role="status"></p>
+          <div id="enquiry-list"></div>
+        </div>
+      </div>
+    </div></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Benny's Tech Services</h3>
+          <p>Your Trusted Digital Partner.</p>
+          <p>CEO: Macham Bwehbensen Peter<br>CAC Registration: 9278046</p>
+        </div>
+        <div>
+          <h3>Pages</h3>
+          <ul>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/services">All Services</a></li>
+            <li><a href="/news">News and Updates</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-use">Terms of Use</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li>Jos, Plateau State, Nigeria</li>
+            <li><a href="tel:09039953015">09039953015</a></li>
+            <li><a href="tel:08126406643">08126406643</a></li>
+            <li><a href="mailto:machambwehb@gmail.com">machambwehb@gmail.com</a></li>
+            <li><a href="https://wa.me/2349039953015" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/benedictap_2002" target="_blank" rel="noopener">Instagram</a></li>
+            <!-- To add Facebook, put the full link of your page here:
+            <li><a href="YOUR-FACEBOOK-LINK" target="_blank" rel="noopener">Facebook</a></li> -->
+          </ul>
+        </div>
+      </div>
+      <p class="footer-bottom">&copy; 2026 Benny's Tech Services. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="/js/admin.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
