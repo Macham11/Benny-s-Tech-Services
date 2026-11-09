@@ -1,0 +1,13 @@
+{
+  "name": "bennys-tech-services",
+  "version": "1.0.0",
+  "description": "Website for Benny's Tech Services, Jos, Plateau State, Nigeria",
+  "private": true,
+  "scripts": {
+    "start": "npx serve public",
+    "dev": "npx vercel dev"
+  },
+  "engines": {
+    "node": "20.x"
+  }
+}
