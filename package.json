@@ -8,6 +8,6 @@
     "dev": "npx vercel dev"
   },
   "engines": {
-    "node": "20.x"
+    "node": "26.x"
   }
 }
